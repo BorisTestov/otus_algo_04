@@ -109,9 +109,9 @@ private:
                         std::vector<std::string> &outputData,
                         std::vector<std::string> &actual) {
         if (verbose) {
-            std::cout << "Input: " << vectorToString(inputData) << std::endl;
-            std::cout << "Expected: " << vectorToString(outputData) << std::endl;
-            std::cout << "Actual: " << vectorToString(actual) << std::endl;
+            std::cout << "Input:\t\t" << vectorToString(inputData) << std::endl;
+            std::cout << "Expected:\t" << vectorToString(outputData) << std::endl;
+            std::cout << "Actual:\t\t" << vectorToString(actual) << std::endl;
         }
         bool result = true;
         for (int i = 0; i < actual.size(); ++i) {
