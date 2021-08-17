@@ -24,6 +24,7 @@ int main() {
     ITaskPtr GoldFibonacciTask = std::make_unique<GoldFibonacci>();
     Tester GoldFibonacciTester(GoldFibonacciTask, "../tests/4.Fibo");
     GoldFibonacciTester.RunTests(false, false, 0.001);
+    //
     ITaskPtr MatrixFibonacciTask = std::make_unique<MatrixFibonacci>();
     Tester MatrixFibonacciTester(MatrixFibonacciTask, "../tests/4.Fibo");
     MatrixFibonacciTester.RunTests(false, false, 0.001);
@@ -47,5 +48,9 @@ int main() {
     ITaskPtr SieveBitsTask = std::make_unique<SieveBits>();
     Tester SieveBitsTester(SieveBitsTask, "../tests/5.Primes");
     SieveBitsTester.RunTests(false, false, 0.001);
+    //
+    ITaskPtr FastSieveTask = std::make_unique<FastSieve>();
+    Tester FastSieveTester(FastSieveTask, "../tests/5.Primes");
+    FastSieveTester.RunTests(true, false, 0.001);
     return 0;
 }

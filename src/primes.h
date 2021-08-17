@@ -174,3 +174,36 @@ private:
         return value_1;
     }
 };
+
+class FastSieve : public ITask {
+public:
+    virtual std::vector<std::string> Run(std::vector<std::string> data) override {
+        unsigned long long N = convertData(data);
+        return {std::to_string(countPrimes(N + 1))};
+    }
+
+private:
+    unsigned long long countPrimes(unsigned long long N) {
+        int *numbers = new int[N];  // Индекс - число, значение - минимальный простой делитель числа
+        for (ull i = 0; i < N; ++i) numbers[i] = 0;
+        std::vector<ull> primes; // Список простых чисел
+        for (ull i = 2; i < N; ++i) {
+            if (numbers[i] == 0)  // Если минимальный делитель установлен в 0
+            {
+                numbers[i] = i;
+                primes.push_back(i);
+            }
+            for (const ull &primeNumber: primes) {
+                if (primeNumber > numbers[i] || primeNumber * i > N) break;
+                numbers[primeNumber * i] = primeNumber;
+            }
+        }
+        delete[] numbers;
+        return primes.size();
+    }
+
+    size_t convertData(std::vector<std::string> data) {
+        unsigned long long value_1 = std::strtoull(data.at(0).c_str(), nullptr, 10);
+        return value_1;
+    }
+};
